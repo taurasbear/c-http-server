@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
     struct addrinfo *result = NULL, *ptr = NULL, hints;
 
     int recvbuflen = DEFAULT_BUF_LEN;
-    const char *sendbuf = "this is a test";
+    const char *sendbuf = "GET /index.html HTTP/1.1";
     char recvbuf[DEFAULT_BUF_LEN];
     int iResult;
 
