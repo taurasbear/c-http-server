@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "ws2tcpip.h": "c",
-        "winsock2.h": "c"
+        "winsock2.h": "c",
+        "stdlib.h": "c",
+        "string.h": "c"
     }
 }

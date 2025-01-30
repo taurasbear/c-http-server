@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
     struct addrinfo *result = NULL, *ptr = NULL, hints;
 
     int recvbuflen = DEFAULT_BUF_LEN;
-    const char *sendbuf = "GET /index.html HTTP/1.1";
+    const char *sendbuf = "GET /index.html HTTP/1.1\r\n";
     char recvbuf[DEFAULT_BUF_LEN];
     int iResult;
 
@@ -80,15 +80,51 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    iResult = send(ConnectSocket, sendbuf, (int)strlen(sendbuf), 0);
+    // iResult = send(ConnectSocket, sendbuf, (int)strlen(sendbuf), 0);
+    // if (iResult == SOCKET_ERROR)
+    // {
+    //     printf("error at send(): %d\n", WSAGetLastError());
+    //     closesocket(ConnectSocket);
+    //     WSACleanup();
+    //     return 1;
+    // }
+    // printf("Bytes sent: %d\n", iResult);
+
+    // ---Testing
+    const char *sendbuf1 = "GE";
+    iResult = send(ConnectSocket, sendbuf1, (int)strlen(sendbuf1), 0);
     if (iResult == SOCKET_ERROR)
     {
-        printf("error at send(): %d\n", WSAGetLastError());
+        printf("error at send(sendbuf1): %d\n", WSAGetLastError());
         closesocket(ConnectSocket);
         WSACleanup();
         return 1;
     }
     printf("Bytes sent: %d\n", iResult);
+
+    const char *sendbuf2 = "T /index";
+    iResult = send(ConnectSocket, sendbuf2, (int)strlen(sendbuf2), 0);
+    if (iResult == SOCKET_ERROR)
+    {
+        printf("error at send(sendbuf2): %d\n", WSAGetLastError());
+        closesocket(ConnectSocket);
+        WSACleanup();
+        return 1;
+    }
+    printf("Bytes sent: %d\n", iResult);
+    
+    const char *sendbuf3 = ".html HTTP/1.1\r\n";
+    iResult = send(ConnectSocket, sendbuf3, (int)strlen(sendbuf3), 0);
+    if (iResult == SOCKET_ERROR)
+    {
+        printf("error at send(sendbuf3): %d\n", WSAGetLastError());
+        closesocket(ConnectSocket);
+        WSACleanup();
+        return 1;
+    }
+    printf("Bytes sent: %d\n", iResult);
+    
+    // Testing---
 
     iResult = shutdown(ConnectSocket, SD_SEND);
     if (iResult == SOCKET_ERROR)
