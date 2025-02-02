@@ -10,6 +10,7 @@ This project uses `WinSock2` from `Win32` to create client and server processes 
 
 - HTTP protocol version is 1.1, however, doesn't fully implement it.
 - Very simple HTTP request/response parsing
+- Uses testing unit testing library `Unity Test`
 
 ### Prerequisites
 
