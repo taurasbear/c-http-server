@@ -3,6 +3,7 @@
         "ws2tcpip.h": "c",
         "winsock2.h": "c",
         "stdlib.h": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "http_parser.h": "c"
     }
 }

@@ -40,8 +40,6 @@ void parse_http_request(char *buffer, size_t length, HttpRequest *httpRequest)
 
 int parse_request_line(char *buffer, size_t *length, char *temp_buffer, size_t *temp_buf_len, HttpRequest *httpRequest)
 {
-    // TODO: Add function to the top of code
-
     if (length <= 0)
     {
         fprintf(stderr, "Cannot parse request line from an empty buffer");
